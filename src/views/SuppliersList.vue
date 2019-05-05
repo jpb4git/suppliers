@@ -1,7 +1,7 @@
 <template>
  <div>
   <h1>Liste</h1>
-      <Supplier>
+     
   </div>
 </template>
 
