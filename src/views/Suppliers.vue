@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col>
-        <h1>Suppliers List</h1>
+        <h1>Suppliers List</h1><button @click="getSuppliers">Charger</button>
       </b-col>
     </b-row>
    <b-row>
@@ -16,36 +16,32 @@
 
 
 <script>
+const axios = require('axios');
 import Supplier from '@/components/Supplier.vue'
 import { format, render, cancel, register } from 'timeago.js';
 export default {
   name: 'Suppliers',
   data :function (){
     return {
-    suppliers: [
-    {
-      id: 1,
-      name: "Fournisseur 1",
-      status: true,
-      checkedAt: format(new Date().toLocaleString(),'fr_FR')
-    },
-    {
-      id: 2,
-      name: "Fournisseur 2",
-      status: false,
-      checkedAt: format(new Date().toLocaleString())
-    },
-    {
-      id: 3,
-      name: "Fournisseur 3",
-      status: true,
-      checkedAt: format(new Date().toLocaleString())
-    }
-  ]
+    suppliers: []
     } 
   },
   components :{
    Supplier
+  },
+  methods :{
+      // Ajax call
+      getSuppliers : function(){
+          axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
+          .then(function (response) {
+              
+              console.log(response);
+              this.suppliers = response.data;
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+      }
   }
 }
 </script>

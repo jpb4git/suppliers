@@ -4,7 +4,7 @@
   <b-container>
     <b-row>
       <b-col>
-          <gmap-map :center="{lat:latitude, lng:longitude}" :zoom="7" style="width: 100%; height: 400px">
+          <gmap-map :center="{lat:latitude, lng:longitude}" :zoom="7" style="width: 50%; height: 400px">
           <GmapMarker 
               v-for="supplier in suppliers" 
               :position="{lat:supplier.latitude,lng:supplier.longitude}" :key="supplier.id">
@@ -50,9 +50,8 @@ export default {
 .b-container{
   .b-row{
     .b-col{
-      background-color: aquamarine!important;
+  
     }  
-    
   }
   
 }
