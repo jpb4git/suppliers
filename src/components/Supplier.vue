@@ -14,6 +14,9 @@
 export default {
   name: 'Supplier', 
   props:{
+    id :{
+      type :Number,
+    },
     name : {
       type : String,
       default : "Supplier-Default"
