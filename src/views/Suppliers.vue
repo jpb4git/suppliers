@@ -33,9 +33,10 @@ export default {
       // Ajax call
       getSuppliers : function(){
           axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
-          .then(function (response) {
-              
-              console.log(response);
+          .then((response) => {
+              console.log(this);
+              console.log(response.data);
+
               this.suppliers = response.data;
           })
           .catch(function (error) {
