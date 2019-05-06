@@ -12,34 +12,29 @@
 
 <script>
 export default {
-  name: 'Supplier',
-  
+  name: 'Supplier', 
   props:{
-      name : {
-        type : String,
-        default : "Supplier-Default"
-      },
-      status:{
-        type : Boolean ,
-        default :true
-      },
-
-      checkedAt:{
-        type : String,
-        default : "Default Date" //Date().toLocaleString() 
-      }  
+    name : {
+      type : String,
+      default : "Supplier-Default"
+    },
+    status:{
+      type : Boolean ,
+      default :true
+    },
+    checkedAt:{
+      type : String,
+      default : "Default Date" //Date().toLocaleString() 
+    }  
   },
-
   data :function (){
     return {}
   },
-
   computed :{
-      stock : function () {
-        return (this.status) ? "ok" : "ko"
-      }
+    stock : function () {
+      return (this.status) ? "ok" : "ko"
     }
-  
+  }
 }
 </script>
 
