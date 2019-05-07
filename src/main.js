@@ -4,7 +4,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 //Google librairy 
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {

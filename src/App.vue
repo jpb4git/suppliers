@@ -5,7 +5,9 @@
       <router-link to="/about">About</router-link> |
        <router-link to="/suppliers">Suppliers</router-link> |
         <router-link to="/supplier">Supplier</router-link> |
-        <router-link to="/map">Map</router-link>
+        <router-link to="/map">Map</router-link> |
+        <router-link to="/mapLeaf">MapLeafLet</router-link> |
+         <router-link to="/AddSupplier">Add Supplier</router-link>
     </div>
     <router-view/>
   </div>

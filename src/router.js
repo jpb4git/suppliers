@@ -3,11 +3,13 @@ import Router     from 'vue-router'
 
 
 
-import Home       from './views/Home.vue'
-import About      from './views/About.vue'
-import Suppliers  from './views/Suppliers.vue'
-import Supplier   from './components/Supplier.vue'
-import Map        from './views/Map.vue'
+import Home         from './views/Home.vue'
+import About        from './views/About.vue'
+import Suppliers    from './views/Suppliers.vue'
+import Supplier     from './components/Supplier.vue'
+import Map          from './views/Map.vue'
+import SupplierForm from './components/supplierForm.vue'
+import MapLeafLet   from './views/mapLeaflet.vue'
 
 Vue.use(Router)
 
@@ -35,10 +37,21 @@ export default new Router({
       name: 'supplier',
       component: Supplier
     },
+
      {
       path: '/map',
       name: 'map',
       component: Map
+    },
+    { //Temp route
+      path: '/AddSupplier',
+      name: 'AddSupplier',
+      component: SupplierForm
+    },
+    { //Temp route
+      path: '/mapLeaf',
+      name: 'mapLeaf',
+      component: MapLeafLet
     }
   ]
 })

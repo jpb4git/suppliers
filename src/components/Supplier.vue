@@ -1,21 +1,27 @@
 <template>
  <div>
-   <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
-    <h1>{{name}}</h1>
-    <hr class="my-4">
-    <h3 :class="{success : status,error :!status}">A du stock ? {{stock}}</h3>
-    <hr class="my-4">
-    <h5>{{checkedAt}}</h5>
-  </b-jumbotron>
+    <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
+      <h1>{{ name }}</h1>
+      <hr class="my-4">
+      <h5 :class="{success : status , error : !status }">A du Stock {{stock}}</h5>
+      <hr class="my-4">
+      <h3>{{ checkedAt }}</h3>
+    </b-jumbotron>
+ 
+
+  
   </div>
 </template>
 
+
 <script>
+import { format, render, cancel, register } from 'timeago.js';
 export default {
+  
   name: 'Supplier', 
   props:{
     id :{
-      type :Number,
+      type :String,
     },
     name : {
       type : String,
@@ -27,17 +33,30 @@ export default {
     },
     checkedAt:{
       type : String,
-      default : "Default Date" //Date().toLocaleString() 
+      default : Date().toLocaleString() 
+    },
+    latitude:{
+      type : String,
+      default : "-12.15",
+             
+    },
+    longitude:{
+      type : String,
+      default : "-125.01",  
     }  
   },
   data :function (){
-    return {}
+    return {
+    
+    }
   },
   computed :{
     stock : function () {
       return (this.status) ? "ok" : "ko"
-    }
-  }
+    },
+    beautifyDate : function(){}
+  },
+
 }
 </script>
 
@@ -49,6 +68,13 @@ export default {
 .error{
   background-color: rgb(233, 16, 16);
   color: aliceblue
+}
+
+.b-jumbotron{
+  background-color: rgb(72, 90, 105)!important;
+}
+.xCross:hover{
+  cursor: pointer;
 }
 
 
