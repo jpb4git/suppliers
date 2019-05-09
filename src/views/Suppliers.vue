@@ -23,7 +23,9 @@
 
 <script>
   const axios = require('axios');
-  import Supplier from '@/components/Supplier.vue'
+  import Supplier from '@/components/Supplier.vue';
+  import api from '@/api/api';
+
   import { format, render, cancel, register } from 'timeago.js';
 
 export default {
@@ -33,10 +35,11 @@ export default {
     suppliers: [],
     loading: false,
     error: false,
-    } 
+    }
   },
   components :{
    Supplier,
+
 
   },
   methods :{
@@ -44,9 +47,9 @@ export default {
       getSuppliers : function(){
           axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
           .then((response) => {
-           
-              console.log(this);
-              console.log(response.data);
+
+              //console.log(this);
+             // console.log(response.data);
               this.suppliers = response.data;
           })
           .catch(function (error) {
@@ -55,10 +58,14 @@ export default {
       }
   },
   created() {
-    
+    // passage du component par ref
+    api.getSuppliers(this, 'https://api-suppliers.herokuapp.com/api/suppliers');
+
    // axios.delete(('https://api-suppliers.herokuapp.com/api/suppliers/5cd16c193d8f780017bf0a7e'))
 
-     axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
+
+    /*
+    axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
           .then((response) => {
             this.loading = true;
             this.suppliers = response.data;
@@ -80,9 +87,18 @@ export default {
                   console.log('Error', error.message);
                 }
           });
+
+
+
+*/
+
+
   },
   computed :{
 
+  },
+  mounted:function() {
+    console.log('mounted')
   }
 }
 </script>

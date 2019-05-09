@@ -12,7 +12,9 @@ import SupplierForm from './components/supplierForm.vue'
 import MapLeafLet   from './views/mapLeaflet.vue'
 
 Vue.use(Router)
-
+/**
+ * test
+ */
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
