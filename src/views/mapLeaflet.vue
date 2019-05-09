@@ -19,7 +19,7 @@
                     @update:bounds="boundsUpdated"
                     >
                     <LTileLayer :url="url"></LTileLayer>
-                     <LMarker  v-for="supplier in suppliers" :lat-lng="[44,5]" :key="supplier.id"></LMarker>
+                     <LMarker  v-for="supplier in suppliers" :lat-lng="[parseInt(supplier.latitude),parseInt(supplier.longitude)]" :key="supplier.id"></LMarker>
                 </LMap>
             </div>
       </b-col>
@@ -50,7 +50,7 @@ export default {
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             zoom: 3,
             center: [47.413220, -1.219482],
-            bounds: null 
+            bounds: null
       }
 
   },
@@ -98,7 +98,7 @@ export default {
       this.bounds = bounds;
     }
   }
-  
+
 }
 </script>
 
