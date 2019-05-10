@@ -4,10 +4,13 @@
   <b-container>
     <b-row>
       <b-col class="d-flex  justify-content-center p-1" v-if="loaded">
-          <gmap-map :center="{lat:latitude, lng:longitude}" :zoom="7" style="width: 100%; height: 500px">
-          <GmapMarker
-              v-for="supplier in suppliers"
-              :position="{lat:parseInt(supplier.latitude),lng:parseInt(supplier.longitude)}" :key="supplier.id">
+          <gmap-map :center="pos" :zoom="7" style="width: 100%; height: 500px">
+          <GmapMarker v-for="supplier in suppliers"
+              :position="{lat:parseFloat(supplier.latitude),lng:parseFloat(supplier.longitude)}" :key="supplier.id">
+            </GmapMarker>
+              <!-- User Browser Location Icon  -->
+            <GmapMarker :position="pos"
+                          icon="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/64/Map-Marker-Marker-Outside-Pink.png">
             </GmapMarker>
           </gmap-map>
       </b-col>
@@ -29,19 +32,41 @@ export default {
   data : function (){
     return {
              suppliers: [],
+             usrCoords : {},
              loaded: false,
              error: false,
-             latitude:-12.15,
-             longitude: -125.01,
+             pos : {'lat' : 44,'lng' : 7.15}
       }
 
   },
-  created() {
 
+  created() {
+    console.log(this.pos.latitude);
     // passage du component par ref
     api.getSuppliers(this, 'https://api-suppliers.herokuapp.com/api/suppliers');
 
   },
+  methods: {
+
+    updateMapUserPoint :  function (){
+
+      if (navigator.geolocation)
+      {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.pos.lat =  position.coords.latitude
+          this.pos.lng = position.coords.longitude
+        });
+      }
+      else{
+        console.log("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+      }
+
+    },
+  },
+
+  mounted(){
+    this.updateMapUserPoint();
+ }
 
 }
 </script>
@@ -54,6 +79,11 @@ export default {
 
     }
   }
+
+    .GmapMarker{
+        img{width : 50px!important;}
+
+    }
 
 }
 </style>

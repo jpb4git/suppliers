@@ -70,13 +70,15 @@ export default {
               formData.append('CheckedAt', this.formCheckedAt);
 
         */
-         axios.post('https://api-suppliers.herokuapp.com/api/suppliers',{
-            name      : this.formName,
+         axios.post('https://api-suppliers.herokuapp.com/api/suppliers',
+           {
+            name        : this.formName,
             checkedAt	: this.formCheckedAt,
-            status    : this.formStatus,
+            status      : this.formStatus,
             latitude	: this.formLatitude,
-            longitude : this.formLongitude
-         }).then(function(response){
+            longitude   : this.formLongitude
+           }
+         ).then(function(response){
             console.log(response)
          }).catch(function(error){
             console.log(error);

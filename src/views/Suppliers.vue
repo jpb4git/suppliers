@@ -4,6 +4,11 @@
       <b-col class="d-flex  justify-content-center p-1">
         <h1>Suppliers List</h1>
         <span class="mt-3 bg-success"></span>
+          <select class="ml-5" name="trieStock" id="trieStock">
+              <option value="true">Suppliers with stocks</option>
+              <option value="false">Suppliers without stocks</option>
+              <option value="*">all suppliers</option>
+          </select>
       </b-col>
     </b-row>
 
@@ -48,22 +53,12 @@ export default {
 
   },
   methods :{
-      // Ajax call
-      getSuppliers : function(){
-          axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
-          .then((response) => {
-              this.suppliers = response.data;
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
-      }
+
   },
   created() {
     // passage du component par ref
     api.getSuppliers(this, 'https://api-suppliers.herokuapp.com/api/suppliers');
-
-   // axios.delete(('https://api-suppliers.herokuapp.com/api/suppliers/5cd16c193d8f780017bf0a7e'))
+   // axios.delete('https://api-suppliers.herokuapp.com/api/suppliers/5cd5392a618d300017f13712')
 
   }
 }

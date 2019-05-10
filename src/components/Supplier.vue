@@ -7,9 +7,9 @@
       <hr class="my-4">
       <h3>{{ checkedAt }}</h3>
     </b-jumbotron>
- 
 
-  
+
+
   </div>
 </template>
 
@@ -17,8 +17,8 @@
 <script>
 import { format, render, cancel, register } from 'timeago.js';
 export default {
-  
-  name: 'Supplier', 
+
+  name: 'Supplier',
   props:{
     id :{
       type :String,
@@ -33,21 +33,21 @@ export default {
     },
     checkedAt:{
       type : String,
-      default : Date().toLocaleString() 
+      default : Date().toLocaleString()
     },
     latitude:{
       type : String,
       default : "-12.15",
-             
+
     },
     longitude:{
       type : String,
-      default : "-125.01",  
-    }  
+      default : "-125.01",
+    }
   },
   data :function (){
     return {
-    
+
     }
   },
   computed :{
