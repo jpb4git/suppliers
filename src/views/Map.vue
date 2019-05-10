@@ -10,7 +10,7 @@
             </GmapMarker>
               <!-- User Browser Location Icon  -->
             <GmapMarker :position="pos"
-                          icon="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/64/Map-Marker-Marker-Outside-Pink.png">
+                        icon="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/64/Map-Marker-Marker-Outside-Pink.png">
             </GmapMarker>
           </gmap-map>
       </b-col>
@@ -39,7 +39,6 @@ export default {
       }
 
   },
-
   created() {
     console.log(this.pos.latitude);
     // passage du component par ref
@@ -79,11 +78,6 @@ export default {
 
     }
   }
-
-    .GmapMarker{
-        img{width : 50px!important;}
-
-    }
 
 }
 </style>

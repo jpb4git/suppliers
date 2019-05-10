@@ -61,14 +61,13 @@ export default {
         this.showSupplier = !this.showSupplier;
     },
     createSupplier : function(){
-        /*
-          let formData = new FormData();
-              formData.append('name', this.formName);
-              formData.append('status', this.formStatus);
-              formData.append('longitude', this.formLongitude);
-              formData.append('latitude', this.formLatitude);
-              formData.append('CheckedAt', this.formCheckedAt);
-
+        /*let formData = new FormData();
+        formData.append('name', this.formName);
+        formData.append('status', this.formStatus);
+        formData.append('longitude', this.formLongitude);
+        formData.append('latitude', this.formLatitude);
+        formData.append('CheckedAt', this.formCheckedAt);
+        console.log(formData);
         */
          axios.post('https://api-suppliers.herokuapp.com/api/suppliers',
            {
