@@ -7,7 +7,7 @@
         <form class="w-100 formAdd">
             <div class="form-group ">
                 <label>name</label>
-                <input type="text" class="w-100" name="name" v-model="formName">    
+                <input type="text" class="w-100" name="name" v-model="formName">
             </div>
             <div class="form-group w-100">
                 <label>checkedAt</label>
@@ -25,16 +25,16 @@
                 <label>longitude</label>
                 <input type="text" class="w-100" name="longitude" v-model="formLongitude">
             </div>
-            <input type="button" class="btn btn-success w-100" @click="createSupplier()">    
+            <input type="button" class="btn btn-success w-100" @click="createSupplier()">
         </form>
-    </div>    
+    </div>
 </template>
 
 
 <script>
  const axios = require('axios');
 export default {
-  name: 'SupplierForm', 
+  name: 'SupplierForm',
 
   data :function (){
     return {
@@ -45,7 +45,7 @@ export default {
       formLongitude : "",
       formLatitude  : "",
       formCheckedAt  : "",
-      
+
     }
   },
   computed :{
@@ -61,18 +61,19 @@ export default {
         this.showSupplier = !this.showSupplier;
     },
     createSupplier : function(){
-        /*let formData = new FormData();
-        formData.append('name', this.formName);
-        formData.append('status', this.formStatus);
-        formData.append('longitude', this.formLongitude);
-        formData.append('latitude', this.formLatitude);
-        formData.append('CheckedAt', this.formCheckedAt);
-        console.log(formData);
+        /*
+          let formData = new FormData();
+              formData.append('name', this.formName);
+              formData.append('status', this.formStatus);
+              formData.append('longitude', this.formLongitude);
+              formData.append('latitude', this.formLatitude);
+              formData.append('CheckedAt', this.formCheckedAt);
+
         */
          axios.post('https://api-suppliers.herokuapp.com/api/suppliers',{
-            name      : this.formName,	
+            name      : this.formName,
             checkedAt	: this.formCheckedAt,
-            status    : this.formStatus,	
+            status    : this.formStatus,
             latitude	: this.formLatitude,
             longitude : this.formLongitude
          }).then(function(response){
