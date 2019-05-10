@@ -2,12 +2,12 @@
 
   <div class="b-col  p-5 m-2">
         <div class="d-flex justify-content-around">
-            <h1>Nouveau Supplier</h1> <span class="bg-danger p-2 text-light rounded mt-3 xCross" @click="closeForm">x</span>
+            <h1>Edit Supplier</h1> <span class="bg-danger p-2 text-light rounded mt-3 xCross" @click="closeForm">x</span>
         </div>
         <form class="w-100 formAdd">
             <div class="form-group ">
-                <label>name</label>
-                <input type="text" class="w-100" name="name" v-model="formName">
+              <label>name</label>
+              <input type="text" class="w-100" name="name" v-model="formName">
             </div>
             <div class="form-group w-100">
                 <label>checkedAt</label>

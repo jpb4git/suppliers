@@ -9,6 +9,7 @@ import Suppliers    from './views/Suppliers.vue'
 import Supplier     from './components/Supplier.vue'
 import Map          from './views/Map.vue'
 import SupplierForm from './components/supplierForm.vue'
+import SupplierFormEdit from './components/supplierFormEdit.vue'
 import MapLeafLet   from './views/mapLeaflet.vue'
 
 Vue.use(Router)
@@ -33,6 +34,16 @@ export default new Router({
       path: '/suppliers',
       name: 'suppliers',
       component: Suppliers
+    },
+    {
+      path: '/suppliers/:id',
+      name: 'supplierEdit',
+      component: SupplierFormEdit
+    },
+    {
+      path: '/suppliers/:id',
+      name: 'supplierEdit',
+      component: SupplierFormEdit
     },
      { //Temp route
       path: '/supplier',

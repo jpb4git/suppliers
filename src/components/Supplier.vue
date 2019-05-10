@@ -6,6 +6,8 @@
       <h5 :class="{success : status , error : !status }">A du Stock {{stock}}</h5>
       <hr class="my-4">
       <h3>{{ checkedAt }}</h3>
+      <router-link :to="{path :'/suppliers' , query : { suid : id }}">Modifier</router-link><br>
+      <router-link :to="{path :'/suppliers/1'}">Modifier</router-link>
     </b-jumbotron>
 
 
