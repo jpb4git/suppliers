@@ -8,13 +8,18 @@
     </b-row>
 
 
-   <b-row class="mt-5" v-if="loading">
+   <b-row class="mt-5" v-if="loaded">
      <b-col v-for="supplier in suppliers" :key="supplier.id" >
           <Supplier :id="supplier.id" :name="supplier.name" :status="supplier.status" :checkedAt="supplier.checkedAt" />
     </b-col>
    </b-row>
      <b-row class="mt-5" v-else>
-        <h1 class="text-info w-100 text-center"> Chargement en cours ...</h1>
+         <b-col v-if="error">
+             <h1 class="text-danger w-100 text-center"> Erreur lors du chargement des données. </h1>
+         </b-col>
+         <b-col v-else>
+            <h1 class="text-info w-100 text-center"> Chargement en cours ...</h1>
+         </b-col>
      </b-row>
   </b-container>
 </template>
@@ -33,7 +38,7 @@ export default {
   data :function (){
     return {
     suppliers: [],
-    loading: false,
+    loaded: false,
     error: false,
     }
   },
@@ -47,9 +52,6 @@ export default {
       getSuppliers : function(){
           axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
           .then((response) => {
-
-              //console.log(this);
-             // console.log(response.data);
               this.suppliers = response.data;
           })
           .catch(function (error) {
@@ -63,42 +65,6 @@ export default {
 
    // axios.delete(('https://api-suppliers.herokuapp.com/api/suppliers/5cd16c193d8f780017bf0a7e'))
 
-
-    /*
-    axios.get('https://api-suppliers.herokuapp.com/api/suppliers')
-          .then((response) => {
-            this.loading = true;
-            this.suppliers = response.data;
-          })
-          .catch(function (error) {
-               if (error.response) {
-                  // The request was made and the server responded with a status code
-                  // that falls out of the range of 2xx
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                } else if (error.request) {
-                  // The request was made but no response was received
-                  // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                  // http.ClientRequest in node.js
-                  console.log(error.request);
-                } else {
-                  // Something happened in setting up the request that triggered an Error
-                  console.log('Error', error.message);
-                }
-          });
-
-
-
-*/
-
-
-  },
-  computed :{
-
-  },
-  mounted:function() {
-    console.log('mounted')
   }
 }
 </script>
