@@ -40,17 +40,6 @@ export default new Router({
       name: 'supplierEdit',
       component: SupplierFormEdit
     },
-    {
-      path: '/suppliers/:id',
-      name: 'supplierEdit',
-      component: SupplierFormEdit
-    },
-     { //Temp route
-      path: '/supplier',
-      name: 'supplier',
-      component: Supplier
-    },
-
      {
       path: '/map',
       name: 'map',

@@ -7,25 +7,25 @@
         <form class="w-100 formAdd">
             <div class="form-group ">
               <label>name</label>
-              <input type="text" class="w-100" name="name" v-model="formName">
+              <input type="text" class="w-100" name="name" v-model="supplier.name">
             </div>
             <div class="form-group w-100">
                 <label>checkedAt</label>
-                <input type="date" class="w-100" name="checkedAt" v-model="formCheckedAt">
+                <input type="datetime" class="w-100" name="checkedAt" v-model="supplier.checkedAt">
             </div>
             <div class="form-group w-100">
                 <label>Status</label>
-                <input type="text" class="w-100" name="status" v-model="formStatus">
+                <input type="text" class="w-100" name="status" v-model="supplier.status">
             </div>
             <div class="form-gsupplierForm.vueroup w-100">
                 <label>latitude</label>
-                <input type="text" class="w-100" name="latitude" v-model="formLatitude">
+                <input type="text" class="w-100" name="latitude" v-model="supplier.latitude">
             </div>
             <div class="form-group w-100">
                 <label>longitude</label>
-                <input type="text" class="w-100" name="longitude" v-model="formLongitude">
+                <input type="text" class="w-100" name="longitude" v-model="supplier.longitude">
             </div>
-            <input type="button" class="btn btn-success w-100" @click="createSupplier()">
+            <input type="button" class="btn btn-success w-100" @click="storeSupplier()">
         </form>
     </div>
 </template>
@@ -33,18 +33,25 @@
 
 <script>
  const axios = require('axios');
+ import api from '@/api/api';
 export default {
   name: 'SupplierForm',
 
-  data :function (){
+  data:function (){
     return {
-      showSupplier : true,
-
+      supplier :{
+        id        : "",
+        name      : "",
+        status    : "",
+        longitude : "",
+        latitude  : "",
+        checkedAt : "",
+      },
       formName      : "",
       formStatus    : "",
       formLongitude : "",
       formLatitude  : "",
-      formCheckedAt  : "",
+      formCheckedAt : "",
 
     }
   },
@@ -60,22 +67,15 @@ export default {
     closeForm : function(){
         this.showSupplier = !this.showSupplier;
     },
-    createSupplier : function(){
-        /*let formData = new FormData();
-        formData.append('name', this.formName);
-        formData.append('status', this.formStatus);
-        formData.append('longitude', this.formLongitude);
-        formData.append('latitude', this.formLatitude);
-        formData.append('CheckedAt', this.formCheckedAt);
-        console.log(formData);
-        */
-         axios.post('https://api-suppliers.herokuapp.com/api/suppliers',
+    storeSupplier : function(){
+
+         axios.put('https://api-suppliers.herokuapp.com/api/suppliers/'+this.supplier.id,
            {
-            name        : this.formName,
-            checkedAt	: this.formCheckedAt,
-            status      : this.formStatus,
-            latitude	: this.formLatitude,
-            longitude   : this.formLongitude
+            name        : this.supplier.name,
+            checkedAt	: this.supplier.CheckedAt,
+            status      : this.supplier.status,
+            latitude	: this.supplier.latitude,
+            longitude   : this.supplier.longitude
            }
          ).then(function(response){
             console.log(response)
@@ -84,7 +84,17 @@ export default {
          });
 
     },
-  }
+  },
+  mounted : function(){
+  },
+
+  created:function(){
+    console.log('https://api-suppliers.herokuapp.com/api/suppliers/'+ this.$router.currentRoute.params.id);
+    api.getSupplier(this, 'https://api-suppliers.herokuapp.com/api/suppliers/'+ this.$router.currentRoute.params.id);
+    //store on data
+    console.log('sup : ' + this.supplier.id);
+
+  },
 }
 </script>
 
