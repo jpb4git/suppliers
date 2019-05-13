@@ -4,17 +4,18 @@
       <b-col class="d-flex  justify-content-center p-1">
         <h1>Suppliers List</h1>
         <span class="mt-3 bg-success"></span>
-          <select class="ml-5" name="trieStock" id="trieStock">
+          <select class="ml-5"   v-model="listState">
+              <option value="" selected>all suppliers</option>
               <option value="true">Suppliers with stocks</option>
               <option value="false">Suppliers without stocks</option>
-              <option value="*">all suppliers</option>
+
           </select>
       </b-col>
     </b-row>
 
 
    <b-row class="mt-5" v-if="loaded">
-     <b-col v-for="supplier in suppliers" :key="supplier.id" >
+     <b-col v-for="supplier in filteringSuppliers()" :key="supplier.id" >
           <Supplier :id="supplier.id" :name="supplier.name" :status="supplier.status" :checkedAt="supplier.checkedAt" />
     </b-col>
    </b-row>
@@ -42,10 +43,12 @@ export default {
   name: 'Suppliers',
   data :function (){
     return {
-    suppliers: [],
-    loaded: false,
-    error: false,
+    suppliers   : [],
+    listState   : "",
+    loaded      : false,
+    error       : false,
     }
+
   },
   components :{
    Supplier,
@@ -54,11 +57,24 @@ export default {
   },
   methods :{
 
+    filteringSuppliers :function(){
+      if (this.listState == ''){
+        return this.suppliers.filter(supplier => supplier.status == true || supplier.status == false);
+      }else{
+        return this.suppliers.filter(supplier => supplier.status.toString() == this.listState );
+      }
+
+    },
+
   },
+
+  computed :{
+
+  },
+
   created() {
     // passage du component par ref
     api.getSuppliers(this, 'https://api-suppliers.herokuapp.com/api/suppliers');
-   // axios.delete('https://api-suppliers.herokuapp.com/api/suppliers/5cd5392a618d300017f13712')
 
   }
 }

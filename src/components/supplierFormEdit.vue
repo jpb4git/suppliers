@@ -25,7 +25,7 @@
                 <label>longitude</label>
                 <input type="text" class="w-100" name="longitude" v-model="supplier.longitude">
             </div>
-            <input type="button" class="btn btn-success w-100" @click="storeSupplier()">
+            <input type="button" class="btn btn-success w-100" @click="storeSupplier()" value="Modifier">
         </form>
     </div>
 </template>

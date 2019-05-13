@@ -6,7 +6,10 @@
       <h5 :class="{success : status , error : !status }">A du Stock {{stock}}</h5>
       <hr class="my-4">
       <h3>{{ checkedAt }}</h3>
-      <router-link :to="'/suppliers/' + this.id ">Modifier</router-link><br>
+        <div class="d-flex flex-column p-3">
+          <router-link :to="'/suppliers/edit/' + this.id  "> <span class="btn btn-info w-100">Modifier</span></router-link><br>
+          <router-link :to="'/suppliers/delete/' + this.id  "><span class="btn btn-danger w-100">Supprimer</span></router-link><br>
+        </div>
 
     </b-jumbotron>
 
