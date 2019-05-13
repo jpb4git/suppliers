@@ -5,10 +5,9 @@
         <h1>Suppliers List</h1>
         <span class="mt-3 bg-success"></span>
           <select class="ml-5"   v-model="listState">
-              <option value="" selected>all suppliers</option>
+              <option value="">all suppliers</option>
               <option value="true">Suppliers with stocks</option>
               <option value="false">Suppliers without stocks</option>
-
           </select>
       </b-col>
     </b-row>
@@ -38,7 +37,7 @@
   import Supplier from '@/components/Supplier.vue';
   import api from '@/api/api';
 
-  import { format, render, cancel, register } from 'timeago.js';
+  //import { format, render, cancel, register } from 'timeago.js';
 
 export default {
   name: 'Suppliers',
