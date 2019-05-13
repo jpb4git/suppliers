@@ -78,11 +78,12 @@ export default {
             longitude   : this.supplier.longitude
            }
          ).then(function(response){
-            console.log(response)
+
          }).catch(function(error){
             console.log(error);
          });
-
+      api.getSuppliers(this,'https://api-suppliers.herokuapp.com/api/suppliers')
+      this.$router.push('/suppliers')
     },
   },
   mounted : function(){
