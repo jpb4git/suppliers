@@ -59,11 +59,10 @@ export default {
 
     filteringSuppliers :function(){
       if (this.listState == ''){
-        return this.suppliers.filter(supplier => supplier.status == true || supplier.status == false);
-      }else{
-        return this.suppliers.filter(supplier => supplier.status.toString() == this.listState );
+        return this.suppliers;
       }
 
+      return this.suppliers.filter(supplier => supplier.status.toString() == this.listState );
     },
 
   },
