@@ -24,14 +24,12 @@ getSuppliers (target, url) {
 
     axios.get(url)
       .then((response) =>  {
-
         target.supplier.id = response.data.id;
         target.supplier.name = response.data.name;
         target.supplier.status = response.data.status;
         target.supplier.longitude = response.data.longitude;
         target.supplier.latitude = response.data.latitude;
         target.supplier.checkedAt = response.data.checkedAt;
-
         console.log('loaded data from axios solo.' + target.supplier)
       })
       .catch(function (error) {

@@ -27,6 +27,7 @@
             <h1 class="text-info w-100 text-center"> Chargement en cours ...</h1>
          </b-col>
      </b-row>
+
   </b-container>
 </template>
 
@@ -74,19 +75,12 @@ export default {
   created() {
     // passage du component par ref
     api.getSuppliers(this, 'https://api-suppliers.herokuapp.com/api/suppliers');
-
   }
 }
 </script>
 
-
-
-
-
-
 <style lang="scss">
-
-ul{
-  list-style: none;
-}
+    ul{
+      list-style: none;
+    }
 </style>
