@@ -55,11 +55,13 @@ export default {
   methods : {
 
     deleteSupplier : function(){
-
+         let that = this;
          axios.delete('https://api-suppliers.herokuapp.com/api/suppliers/'+this.supplier.id)
 
          .then(function(response){
-            console.log(response)
+
+           api.getSuppliers(this,'https://api-suppliers.herokuapp.com/api/suppliers')
+           that.$router.push('/suppliers')
          }).catch(function(error){
             console.log(error);
          });

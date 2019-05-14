@@ -23,7 +23,7 @@
              <h1 class="text-danger w-100 text-center"> Erreur lors du chargement des données. </h1>
          </b-col>
          <b-col v-else>
-            <h1 class="text-info w-100 text-center"> Chargement en cours ...</h1>
+            <h1 class="text-info w-100 text-center"> processing ...</h1>
          </b-col>
      </b-row>
 

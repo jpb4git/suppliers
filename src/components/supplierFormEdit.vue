@@ -1,6 +1,6 @@
 <template>
-
-  <div class="b-col  p-5 m-2">
+<div>
+  <div class="b-col  p-5 m-2" v-if="status_Axios == 'idle'">
         <div class="d-flex justify-content-around">
             <h1>Edit Supplier</h1> <span class="bg-danger p-2 text-light rounded mt-3 xCross" @click="closeForm">x</span>
         </div>
@@ -28,6 +28,10 @@
             <input type="button" class="btn btn-success w-100" @click="storeSupplier()" value="Modifier">
         </form>
     </div>
+    <div class="b-col  p-5 m-2" v-else>
+        <h1 class="text-info w-100 text-center"> processing ...</h1>
+    </div>
+</div>
 </template>
 
 
@@ -52,7 +56,7 @@ export default {
       formLongitude : "",
       formLatitude  : "",
       formCheckedAt : "",
-
+      status_Axios  :'idle'
     }
   },
   computed :{
@@ -68,7 +72,9 @@ export default {
         this.showSupplier = !this.showSupplier;
     },
     storeSupplier : function(){
-
+         this.status_Axios = "loading";
+         // access this in axios promesse
+         let that = this;
          axios.put('https://api-suppliers.herokuapp.com/api/suppliers/'+this.supplier.id,
            {
             name        : this.supplier.name,
@@ -78,12 +84,15 @@ export default {
             longitude   : this.supplier.longitude
            }
          ).then(function(response){
-
+           api.getSuppliers(this,'https://api-suppliers.herokuapp.com/api/suppliers')
+           that.$router.push('/suppliers')
          }).catch(function(error){
             console.log(error);
          });
-      api.getSuppliers(this,'https://api-suppliers.herokuapp.com/api/suppliers')
-      this.$router.push('/suppliers')
+
+
+
+
     },
   },
   mounted : function(){
