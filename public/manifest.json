@@ -1,6 +1,6 @@
 {
-  "name": "supplier",
-  "short_name": "supplier",
+  "name": "suppliers",
+  "short_name": "suppliers",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
